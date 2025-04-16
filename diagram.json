@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Kavya Shakya",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -57.6, "left": 4.84, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -134.1,
+      "left": 148.2,
+      "attrs": { "temperature": "27.3", "humidity": "34" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 0.2, "left": 211.2, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 60.8,
+      "left": -296.8,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": -158.2,
+      "left": -125.8,
+      "attrs": { "travelLength": "30" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": -256.5, "left": -21.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:VN", "red", [ "v-48", "h-172.8", "v57.6" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "relay1:VCC", "esp:VN", "red", [ "h-201.6", "v-19.2" ] ],
+    [ "relay1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "relay1:IN", "esp:23", "green", [ "h0" ] ],
+    [ "ldr1:VCC", "esp:5V", "red", [ "h86.4", "v48", "h47.85" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h105.6", "v18.8" ] ],
+    [ "ldr1:AO", "esp:35", "green", [ "h115.2", "v-87.1" ] ],
+    [ "pot1:VCC", "esp:5V", "red", [ "h-57.6", "v124.8", "h115.2", "v134.4" ] ],
+    [ "pot1:SIG", "esp:34", "green", [ "h-28.8", "v85.6", "h105.6", "v19.2" ] ],
+    [ "pot1:GND", "esp:GND.2", "black", [ "v0", "h53.2", "v96" ] ],
+    [ "gas1:VCC", "esp:5V", "red", [ "h0", "v133.5", "h-124.8", "v220.8" ] ],
+    [ "gas1:GND", "esp:GND.2", "black", [ "h28.8", "v191.2" ] ],
+    [
+      "gas1:AOUT",
+      "esp:33",
+      "green",
+      [ "h57.6", "v57.6", "h-268.8", "v19.2", "h-57.6", "v144", "h134.4", "v57.6" ]
+    ]
+  ],
+  "dependencies": {}
+}
