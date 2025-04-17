@@ -170,7 +170,7 @@ void loop()
         float voltage = analogValue / 4095.0 * 3.3;
         float resistance = (2000.0 * (3.3 - voltage)) / voltage;
         float lux = pow((RL10 * 1e3 / resistance), (1 / GAMMA));
-        float gas = digitalRead(MQ2_Pin) / 4095.0 * 100; // MQ2 sensor value
+        float gas = (analogRead(MQ2_Pin) / 4095.0) * 2474.03 - 444.29; // MQ2 sensor value
 
         // Classify Condition using TinyML
         String plantCondition = classifyPlantCondition(temp, hum, lux, moisture);
