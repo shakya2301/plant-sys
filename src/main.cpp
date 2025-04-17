@@ -16,7 +16,7 @@ const float RL10 = 50;   // LDR resistance at 10 lux
 DHTesp dht;
 const char *ssid = "Wokwi-GUEST";
 const char *password = "";
-const char *mqtt_server = "test.mosquitto.org";
+const char *mqtt_server = "mqtt.eclipseprojects.io";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
